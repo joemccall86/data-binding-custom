@@ -51,7 +51,7 @@ class BlogPostApiSpec extends Specification {
         ]), Map)
         assert anotherBlogPostResponse.status() == HttpStatus.CREATED
 
-        def anotherBlogPostId = anotherBlogPostResponse.body()
+        def anotherBlogPostId = anotherBlogPostResponse.body().id
 
         and: 'the lastViewed Post is set on the person'
         setLastViewedResponse = client.exchange(PUT("/api/people/${personId}", [lastViewedPost: anotherBlogPostId]), Map)
